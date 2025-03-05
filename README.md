@@ -1,10 +1,10 @@
-# Airbnb Clone
+# Next.js Authentication Template
 
 [🇹🇷 Türkçe](#türkçe) | [🇬🇧 English](#english)
 
 # English
 
-A modern web application that replicates core Airbnb functionality, built with Next.js 15 and TypeScript.
+A modern, full-featured Next.js template with multi-language support, authentication (Google, GitHub, Email), and MongoDB integration.
 
 ## 🚀 Features
 
@@ -12,9 +12,10 @@ A modern web application that replicates core Airbnb functionality, built with N
 - Server-side rendering with Next.js
 - TypeScript for type safety
 - Component-based architecture
+- Multi-language support system
+- Authentication with Google, GitHub, and Email
+- MongoDB integration with Prisma ORM
 - Responsive navigation system
-- User authentication system
-- Interactive search functionality
 - Mobile-first design approach
 
 ## 🛠️ Tech Stack
@@ -24,6 +25,8 @@ A modern web application that replicates core Airbnb functionality, built with N
 - **Styling:** Tailwind CSS
 - **State Management:** Zustand
 - **Form Handling:** React Hook Form
+- **Database:** MongoDB
+- **ORM:** Prisma
 - **HTTP Client:** Axios
 - **Icons:** React Icons
 - **UI Components:** Custom-built components
@@ -37,6 +40,7 @@ A modern web application that replicates core Airbnb functionality, built with N
 - Node.js (Latest LTS version recommended)
 - npm or yarn package manager
 - Git
+- MongoDB database
 
 ### Installation
 
@@ -55,12 +59,15 @@ yarn install
 3. Create a `.env` file in the root directory and add necessary environment variables:
 ```env
 # Database Configuration
-DATABASE_URL="your-database-connection-string"
+DATABASE_URL="your-mongodb-connection-string"
 
 # Authentication
 NEXTAUTH_SECRET="your-nextauth-secret"
 
-# GitHub OAuth
+# OAuth Providers
+GOOGLE_ID="your-google-oauth-client-id"
+GOOGLE_SECRET="your-google-oauth-client-secret"
+
 GITHUB_ID="your-github-oauth-app-id"
 GITHUB_SECRET="your-github-oauth-app-secret"
 
@@ -68,12 +75,21 @@ GITHUB_SECRET="your-github-oauth-app-secret"
 NEXTAUTH_URL="http://localhost:3000"
 ```
 
-To set up GitHub OAuth:
+To set up OAuth providers:
+
+**For GitHub:**
 1. Go to GitHub Settings > Developer settings > OAuth Apps
 2. Create a new OAuth application
 3. Set Homepage URL to `http://localhost:3000`
 4. Set Authorization callback URL to `http://localhost:3000/api/auth/callback/github`
-5. Copy the Client ID and Client Secret to your `.env` file
+
+**For Google:**
+1. Visit Google Cloud Console
+2. Create a new project or select existing one
+3. Enable Google+ API
+4. Configure OAuth consent screen
+5. Create credentials (OAuth client ID)
+6. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
 
 4. Run the development server:
 ```bash
@@ -109,6 +125,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## 🔧 Development
 
 - The application uses the Next.js App Router for routing
+- Multi-language support implemented with built-in i18n
+- Authentication handled by NextAuth.js
+- Database operations through Prisma ORM
 - Styling is done using Tailwind CSS utility classes
 - State management is handled with Zustand
 - Form validation and handling with React Hook Form
@@ -129,12 +148,15 @@ To learn more about the technologies used in this project:
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Zustand Documentation](https://github.com/pmndrs/zustand)
 - [React Hook Form Documentation](https://react-hook-form.com/)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [MongoDB Documentation](https://docs.mongodb.com)
+- [NextAuth.js Documentation](https://next-auth.js.org)
 
 ---
 
 # Türkçe
 
-Next.js 15 ve TypeScript ile geliştirilmiş, Airbnb'nin temel işlevselliğini yeniden oluşturan modern bir web uygulaması.
+Çoklu dil desteği, kimlik doğrulama (Google, GitHub, E-posta) ve MongoDB entegrasyonu ile modern, tam özellikli bir Next.js şablonu.
 
 ## 🚀 Özellikler
 
@@ -142,9 +164,10 @@ Next.js 15 ve TypeScript ile geliştirilmiş, Airbnb'nin temel işlevselliğini 
 - Next.js ile sunucu tarafında işleme
 - TypeScript ile tip güvenliği
 - Bileşen tabanlı mimari
+- Çoklu dil desteği sistemi
+- Google, GitHub ve E-posta ile kimlik doğrulama
+- Prisma ORM ile MongoDB entegrasyonu
 - Duyarlı gezinme sistemi
-- Kullanıcı kimlik doğrulama sistemi
-- Etkileşimli arama işlevselliği
 - Önce mobil tasarım yaklaşımı
 
 ## 🛠️ Teknoloji Stack
@@ -154,6 +177,8 @@ Next.js 15 ve TypeScript ile geliştirilmiş, Airbnb'nin temel işlevselliğini 
 - **Stil:** Tailwind CSS
 - **Durum Yönetimi:** Zustand
 - **Form İşleme:** React Hook Form
+- **Veritabanı:** MongoDB
+- **ORM:** Prisma
 - **HTTP İstemcisi:** Axios
 - **İkonlar:** React Icons
 - **UI Bileşenleri:** Özel yapılmış bileşenler
@@ -167,6 +192,7 @@ Next.js 15 ve TypeScript ile geliştirilmiş, Airbnb'nin temel işlevselliğini 
 - Node.js (En son LTS sürümü önerilir)
 - npm veya yarn paket yöneticisi
 - Git
+- MongoDB veritabanı
 
 ### Kurulum
 
@@ -185,12 +211,15 @@ yarn install
 3. Kök dizinde bir `.env` dosyası oluşturun ve gerekli ortam değişkenlerini ekleyin:
 ```env
 # Veritabanı Yapılandırması
-DATABASE_URL="veritabanı-bağlantı-dizginiz"
+DATABASE_URL="mongodb-bağlantı-dizginiz"
 
 # Kimlik Doğrulama
 NEXTAUTH_SECRET="nextauth-gizli-anahtarınız"
 
-# GitHub OAuth
+# OAuth Sağlayıcıları
+GOOGLE_ID="google-oauth-istemci-id'niz"
+GOOGLE_SECRET="google-oauth-istemci-gizli-anahtarınız"
+
 GITHUB_ID="github-oauth-uygulama-id'niz"
 GITHUB_SECRET="github-oauth-uygulama-gizli-anahtarınız"
 
@@ -198,12 +227,21 @@ GITHUB_SECRET="github-oauth-uygulama-gizli-anahtarınız"
 NEXTAUTH_URL="http://localhost:3000"
 ```
 
-GitHub OAuth kurulumu için:
+OAuth sağlayıcılarının kurulumu için:
+
+**GitHub için:**
 1. GitHub Ayarlar > Geliştirici ayarları > OAuth Uygulamaları'na gidin
 2. Yeni bir OAuth uygulaması oluşturun
 3. Ana sayfa URL'sini `http://localhost:3000` olarak ayarlayın
 4. Yetkilendirme callback URL'sini `http://localhost:3000/api/auth/callback/github` olarak ayarlayın
-5. İstemci ID ve İstemci Gizli Anahtarını `.env` dosyanıza kopyalayın
+
+**Google için:**
+1. Google Cloud Console'u ziyaret edin
+2. Yeni bir proje oluşturun veya mevcut bir projeyi seçin
+3. Google+ API'sini etkinleştirin
+4. OAuth onay ekranını yapılandırın
+5. Kimlik bilgileri oluşturun (OAuth istemci kimliği)
+6. Yetkilendirilmiş yönlendirme URI'sini ekleyin: `http://localhost:3000/api/auth/callback/google`
 
 4. Geliştirme sunucusunu başlatın:
 ```bash
@@ -230,15 +268,18 @@ Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açarak
 │   │   ├── modals/    # Modal bileşenleri
 │   │   └── ui/        # Temel UI bileşenleri
 │   ├── hooks/         # Özel React hooks
-│   └── providers/       # Context sağlayıcıları
-├── public/              # Statik dosyalar
-│   └── images/          # Görsel varlıklar
-└── package.json         # Proje bağımlılıkları
+│   └── providers/     # Context sağlayıcıları
+├── public/            # Statik dosyalar
+│   └── images/        # Görsel varlıklar
+└── package.json       # Proje bağımlılıkları
 ```
 
 ## 🔧 Geliştirme
 
 - Uygulama, yönlendirme için Next.js App Router kullanır
+- Çoklu dil desteği yerleşik i18n ile uygulanır
+- Kimlik doğrulama NextAuth.js ile yönetilir
+- Veritabanı işlemleri Prisma ORM aracılığıyla yapılır
 - Stillendirme Tailwind CSS utility sınıfları ile yapılır
 - Durum yönetimi Zustand ile sağlanır
 - Form doğrulama ve işleme React Hook Form ile yapılır
@@ -259,3 +300,6 @@ Projede kullanılan teknolojiler hakkında daha fazla bilgi edinmek için:
 - [Tailwind CSS Dokümantasyonu](https://tailwindcss.com/docs)
 - [Zustand Dokümantasyonu](https://github.com/pmndrs/zustand)
 - [React Hook Form Dokümantasyonu](https://react-hook-form.com/)
+- [Prisma Dokümantasyonu](https://www.prisma.io/docs)
+- [MongoDB Dokümantasyonu](https://docs.mongodb.com)
+- [NextAuth.js Dokümantasyonu](https://next-auth.js.org)
